@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import Card from "../components/Card";
 import colors from "../constants/colors";
 import Input from "../components/Input";
+import NumberContainer from "../components/NumberContainer";
 
 const StartGameScreen = props => {
     const [enteredValue, setEnteredValue] = useState('')
@@ -17,7 +18,9 @@ const StartGameScreen = props => {
     };
     const confirmInputHandler = () => {
         const chosenNumber = parseInt(enteredValue);
-        if (chosenNumber === NaN || chosenNumber <= 0 || chosenNumber > 99) {
+        if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+            Alert.alert('Invalid number!', 'Number has to be between 1 and 99.',
+                [{text: 'Okay', style: 'destructive', onPress: resetInputHandler}])
             return;
         }
         setConfirmed(true);
@@ -25,6 +28,18 @@ const StartGameScreen = props => {
         setSelectedNumber(parseInt(enteredValue));
     };
 
+    let confirmedOutput;
+    if(confirmed) {
+        confirmedOutput = (
+            <Card style={styles.summaryContainer}>
+                <Text>You Selected</Text>
+                <NumberContainer>
+                    {selectedNumber}
+                </NumberContainer>
+                <Button title="START GAME"></Button>
+            </Card>
+        )
+    }
 
     return (
         <TouchableWithoutFeedback onPress={() => {
@@ -48,6 +63,7 @@ const StartGameScreen = props => {
                         <View style={styles.button}><Button title="Confirm" onPress={confirmInputHandler} color={colors.primary}/></View>
                     </View>
                 </Card>
+                {confirmedOutput}
             </View>
         </TouchableWithoutFeedback>
     );
@@ -79,6 +95,11 @@ const styles = StyleSheet.create({
     input : {
         width: 50,
         textAlign: 'center'
+    },
+    summaryContainer: {
+        marginTop: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 export default StartGameScreen;
