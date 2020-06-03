@@ -18,7 +18,10 @@ const GameOverScreen = props => {
             </View>
 
             <View style={styles.resultContainer}>
-                <BodyText style={styles.resultText}>Number of rounds taken to guess the number <Text style={styles.highlight}>{props.userNumber}</Text> was <Text style={styles.highlight}>{props.roundsNumber}</Text></BodyText>
+                <BodyText style={styles.resultText}>Number of rounds taken to guess the number
+                    {' '} <Text style={styles.highlight}>{props.userNumber}</Text> was
+                    {' '} <Text style={styles.highlight}>{props.roundsNumber}</Text>
+                </BodyText>
             </View>
             <MainButton onPress={props.onRestart}>NEW GAME</MainButton>
         </View>
