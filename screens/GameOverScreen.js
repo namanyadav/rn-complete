@@ -16,7 +16,9 @@ const GameOverScreen = props => {
                     resizeMode='cover' />
             </View>
 
-            <BodyText>Number of rounds taken to guess the number <Text style={styles.highlight}>{props.userNumber}</Text> was <Text style={styles.highlight}>{props.roundsNumber}</Text></BodyText>
+            <View style={styles.resultContainer}>
+                <BodyText style={styles.resultText}>Number of rounds taken to guess the number <Text style={styles.highlight}>{props.userNumber}</Text> was <Text style={styles.highlight}>{props.roundsNumber}</Text></BodyText>
+            </View>
             <Button title="NEW GAME" onPress={props.onRestart}/>
         </View>
     )
@@ -42,7 +44,16 @@ const styles = StyleSheet.create({
         marginVertical: 30
     },
     highlight: {
-        color: colors.primary
+        color: colors.primary,
+        fontFamily: 'open-sans-bold'
+    },
+    resultContainer: {
+        marginHorizontal: 40,
+        marginVertical: 15
+    },
+    resultText: {
+        textAlign: 'center',
+        fontSize: 20
     }
 });
 
