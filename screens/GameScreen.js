@@ -105,7 +105,9 @@ const styles = StyleSheet.create({
         width: '60%'
     },
     list: {
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        flexGrow: 1
     },
     listContainer: {
         width: '80%',
