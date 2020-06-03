@@ -10,7 +10,8 @@ const GameOverScreen = props => {
             <View style={styles.imageContainer}>
                 <Image
                     style={styles.image}
-                    source={require('../assets/success.png')}
+                    source={{uri: 'https://cdn.mos.cms.futurecdn.net/ntFmJUZ8tw3ULD3tkBaAtf-970-80.jpg'}}
+                    // source={require('../assets/success.png')}
                     resizeMode='cover' />
             </View>
 
