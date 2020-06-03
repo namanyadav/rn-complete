@@ -4,7 +4,7 @@ import Header from './components/Header';
 import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
 import GameOverScreen from "./screens/GameOverScreen";
-import * as Font from 'expo-form';
+import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 
 const fetchFonts = () => {
